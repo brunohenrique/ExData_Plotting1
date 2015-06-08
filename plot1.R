@@ -1,7 +1,16 @@
-if(is.null(data)) {
-  source("load_data.R")
+source("load_data.R")
+
+graph1 <- function(data = NULL) {
+  if(is.null(data)) {
+    data <- extract_subset()
+  }
+
+  hist(as.numeric(data$Global_active_power),
+       col="red",
+       main="Global Active Power",
+       xlab="Global Active Power (kilowatts)")
 }
 
 png("plot1.png")
-hist(as.numeric(subset$Global_active_power), col="red", main="Global Active Power", xlab="Global Active Power (kilowatts)")
+graph1()
 dev.off()
